@@ -11,8 +11,8 @@ services:
     hostname: mongo
 #    ports:
 #      - 27017
-#    volumes:
-#      - ../dev-ops-repo/yapi/mongo:/data/db
+    volumes:
+      - ../dev-ops-repo/yapi/mongo:/data/db
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
 
