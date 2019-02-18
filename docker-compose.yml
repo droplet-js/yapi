@@ -15,16 +15,12 @@ services:
 #      - ../dev-ops-repo/yapi/mongo:/data/db
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
 
   # 管理员邮箱：admin@admin.com
   # 管理员密码：ymfe.org（默认）
   # 数据库地址：mongo
   # 数据库端口：27017
   # 数据库名：yapi
-  # 数据库用户：root
-  # 数据库密码：root
   yapi:
     container_name: yapi
     image: v7lin/yapi:1.5.2

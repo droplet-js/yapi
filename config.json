@@ -4,19 +4,6 @@
   "db": {
     "servername": "mongo",
     "DATABASE": "yapi",
-    "port": 27017,
-    "user": "root",
-    "pass": "root",
-    "authSource": ""
-  },
-  "mail": {
-    "enable": false,
-    "host": "smtp.163.com",
-    "port": 465,
-    "from": "***@163.com",
-    "auth": {
-      "user": "***@163.com",
-      "pass": "*****"
-    }
+    "port": 27017
   }
 }
