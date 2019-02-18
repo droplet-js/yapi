@@ -35,5 +35,4 @@ WORKDIR /yapi/vendors
 
 EXPOSE 3000
 
-ENTRYPOINT ["node"]
-CMD ["server/app.js"]
+CMD ["/bin/sh", "-c", "[! -e /yapi/init.lock] && npm run install-server; node server/app.js"]
