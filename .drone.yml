@@ -1,0 +1,16 @@
+kind: pipeline
+name: default
+
+steps:
+- name: publish
+  image: plugins/docker
+  settings:
+    repo: v7lin/yapi
+    target: prod
+    username:
+      from_secret: REGISTRY_USER
+    password:
+      from_secret: REGISTRY_PASSWORD
+    tags:
+    - latest
+    - 1.5.2
