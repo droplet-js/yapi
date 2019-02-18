@@ -7,28 +7,21 @@ ENV YAPI_VERSION 1.5.2
 RUN wget https://github.com/YMFE/yapi/archive/v${YAPI_VERSION}.tar.gz
 RUN tar xzf v${YAPI_VERSION}.tar.gz
 
-# --- build ---
-
-FROM node:7.6-alpine as build
-
-ENV YAPI_VERSION 1.5.2
-
-COPY --from=clone /yapi-${YAPI_VERSION} /yapi
-
-RUN apk add --no-cache git python make
-
-RUN cd /yapi; \
-    npm install --production --registry https://registry.npm.taobao.org
-
 # --- prod ---
 
 FROM node:7.6-alpine as prod
 
 MAINTAINER v7lin <v7lin@qq.com>
 
+ENV YAPI_VERSION 1.5.2
+
+COPY --from=clone /yapi-${YAPI_VERSION} /yapi/vendors
+
 RUN apk add --no-cache git python make
 
-COPY --from=build /yapi /yapi/vendors
+RUN cd /yapi/vendors; \
+    npm install --production --registry https://registry.npm.taobao.org
+
 COPY config.json /yapi/
 
 WORKDIR /yapi/vendors
