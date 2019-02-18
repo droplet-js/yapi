@@ -12,16 +12,16 @@ FROM node:11.9.0-alpine as build
 
 COPY --from=clone /yapi $PWD/yapi
 RUN cd yapi; \
-    ls
-RUN npm install -g yapi-cli --registry https://registry.npm.taobao.org
-
-RUN echo $PWD
+    echo $PWD; \
+    npm install -g yapi-cli --registry https://registry.npm.taobao.org
 
 # --- prod ---
 
 FROM node:11.9.0-alpine as prod
 
 MAINTAINER v7lin <v7lin@qq.com>
+
+COPY --from=build /
 
 #RUN docker-php-ext-install mysqli; \
 #    docker-php-ext-install pdo_mysql
