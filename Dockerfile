@@ -10,7 +10,10 @@ RUN git clone -b v${YAPI_VERSION} https://github.com/YMFE/yapi.git
 
 FROM node:11.9.0-alpine as build
 
+RUN apk add --no-cache python
+
 COPY --from=clone /yapi $PWD/yapi
+
 RUN cd yapi; \
     npm install --production --registry https://registry.npm.taobao.org
 
