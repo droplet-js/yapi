@@ -27,7 +27,7 @@ services:
   # 数据库密码：root
   yapi:
     container_name: yapi
-    image: yapi #v7lin/yapi:1.5.2
+    image: v7lin/yapi:1.4.4
     restart: always
     hostname: yapi
     ports:
