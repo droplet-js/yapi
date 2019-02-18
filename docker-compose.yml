@@ -28,6 +28,9 @@ services:
     hostname: yapi
     ports:
       - 8080:3000
+    volumes:
+      - ../dev-ops-repo/yapi/init:/yapi/init
+      - ../dev-ops-repo/yapi/log:/yapi/log
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
     depends_on:
