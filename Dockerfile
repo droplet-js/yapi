@@ -18,7 +18,7 @@ COPY --from=clone /yapi-${YAPI_VERSION} /yapi
 RUN apk add --no-cache git python make openssl tar gcc
 
 RUN cd /yapi; \
-    npm install --production --registry https://registry.npm.taobao.org
+    npm install --dev --registry https://registry.npm.taobao.org
 
 # --- prod ---
 
