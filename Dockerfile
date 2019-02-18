@@ -12,6 +12,7 @@ FROM node:11.9.0-alpine as build
 
 COPY --from=clone /yapi $PWD/yapi
 RUN cd yapi
+RUN ls
 RUN npm install -g yapi-cli --registry https://registry.npm.taobao.org
 
 RUN echo $PWD
