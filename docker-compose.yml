@@ -1,0 +1,38 @@
+# 版本
+version: "3"
+
+# 服务
+services:
+
+  mongo:
+    container_name: mongo
+    image: mongo:2.6
+    restart: always
+    hostname: mongo
+#    ports:
+#      - 27017
+    volumes:
+      - ../dev-ops-repo/yapi/mongo:/data/db
+    environment:
+      - TZ=${TIME_ZONE:-Asia/Shanghai}
+#      - MONGO_INITDB_ROOT_USERNAME=root
+#      - MONGO_INITDB_ROOT_PASSWORD=root
+
+  # 管理员邮箱：admin@admin.com
+  # 管理员密码：ymfe.org（默认）
+  # 数据库地址：mongo
+  # 数据库端口：27017
+  # 数据库名：yapi
+  # 数据库用户：root
+  # 数据库密码：root
+  yapi:
+    container_name: yapi
+    image: yapi #v7lin/yapi:1.5.2
+    restart: always
+    hostname: yapi
+    ports:
+      - 8080:3000
+    environment:
+      - TZ=${TIME_ZONE}
+    depends_on:
+      - mongo
