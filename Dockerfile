@@ -20,7 +20,7 @@ COPY --from=clone /yapi-${YAPI_VERSION} /yapi/vendors
 RUN apk add --no-cache git python make openssl tar gcc
 
 RUN cd /yapi/vendors; \
-    npm install --unsafe-perm
+    npm install
 
 COPY config.json /yapi/
 
