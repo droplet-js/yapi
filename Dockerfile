@@ -30,4 +30,3 @@ EXPOSE 3000
 WORKDIR /yapi/vendors
 
 ENTRYPOINT ["node"]
-CMD ["server/app.js"]
