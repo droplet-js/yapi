@@ -10,7 +10,7 @@ RUN git clone -b v${YAPI_VERSION} https://github.com/YMFE/yapi.git
 
 FROM node:11.9.0-alpine as build
 
-RUN apk add --no-cache python
+RUN apk add --no-cache python make
 
 COPY --from=clone /yapi $PWD/yapi
 
