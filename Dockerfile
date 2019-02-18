@@ -25,13 +25,6 @@ MAINTAINER v7lin <v7lin@qq.com>
 
 COPY --from=build /yapi /yapi/vendors
 
-ENV ADMIN_ACCOUNT admin@admin.com
-ENV MONGODB_SERVER_NAME mongo
-ENV MONGODB_SERVER_PORT 27017
-ENV MONGODB_SERVER_DATABASE yapi
-
-RUN echo "{\"port\":\"3000\",\"adminAccount\":\"${ADMIN_ACCOUNT}\", \"db\":{\"servername\":\"${MONGODB_SERVER_NAME}\",\"port\":${MONGODB_SERVER_PORT},\"DATABASE\":\"${MONGODB_SERVER_DATABASE}\"}}" > /yapi/config.json
-
 EXPOSE 3000
 
 WORKDIR /yapi/vendors
