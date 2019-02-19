@@ -32,7 +32,7 @@ RUN cd /yapi/vendors; \
     npm install -g ykit; \
     npm install --production --registry https://registry.npm.taobao.org
 
-COPY config.json /yapi/
+#COPY config.json /yapi/
 
 WORKDIR /yapi/vendors
 
