@@ -1,4 +1,4 @@
-exports.parseConfig() {
+exports.parseConfig = () => {
     return {
         port: process.env.YAPI_PORT,
         closeRegister: process.env.YAPI_CLOSEREGISTER == 'true' ? true : false,
