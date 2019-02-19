@@ -7,6 +7,11 @@ ENV YAPI_VERSION 1.5.2
 RUN wget https://github.com/YMFE/yapi/archive/v${YAPI_VERSION}.tar.gz
 RUN tar xzf v${YAPI_VERSION}.tar.gz
 
+# 删除无用内容
+RUN rm -rf /yapi-${YAPI_VERSION}/docs; \
+    rm /yapi-${YAPI_VERSION}/README.md; \
+    rm /yapi-${YAPI_VERSION}/yapi-base-flow.jpg
+
 # 魔改
 COPY server/yapiEnv.js /yapi-${YAPI_VERSION}/server
 RUN sed -i "s|yapi.commons.generatePassword('ymfe.org', passsalt)|yapi.commons.generatePassword(yapi.WEBCONFIG.adminPassword, passsalt)|g" /yapi-${YAPI_VERSION}/server/install.js
