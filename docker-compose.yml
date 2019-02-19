@@ -11,26 +11,28 @@ services:
     hostname: mongo
 #    ports:
 #      - 27017
-    volumes:
-      - ../dev-ops-repo/yapi/mongo:/data/db
+#    volumes:
+#      - ../dev-ops-repo/yapi/mongo:/data/db
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
 
-  # 管理员邮箱：admin@admin.com
-  # 管理员密码：ymfe.org（默认）
-  # 数据库地址：mongo
-  # 数据库端口：27017
   yapi:
     container_name: yapi
-    image: v7lin/yapi:1.5.2
+    image: v7lin/yapi:test
     restart: always
     hostname: yapi
     ports:
       - 8080:3000
-    volumes:
-      - ../dev-ops-repo/yapi/init:/yapi/init
+#    volumes:
+#      - ../dev-ops-repo/yapi/init:/yapi/init
 #      - ../dev-ops-repo/yapi/log:/yapi/log
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
+      - YAPI_PORT=3000
+      - YAPI_ADMINACCOUNT=admin@admin.com
+      - YAPI_ADMINPASSWORD=admin
+      - YAPI_DB_SERVERNAME=mongo
+      - YAPI_DB_PORT=27017
+      - YAPI_DB_DATABASE=yapi
     depends_on:
       - mongo
