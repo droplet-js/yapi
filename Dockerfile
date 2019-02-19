@@ -20,7 +20,8 @@ COPY --from=clone /yapi-${YAPI_VERSION} /yapi/vendors
 RUN apk add --no-cache git python make
 
 RUN cd /yapi/vendors; \
-    npm install --production --registry https://registry.npm.taobao.org
+    npm install -g ykit \
+    npm install --registry https://registry.npm.taobao.org
 
 COPY config.json /yapi/
 
@@ -28,4 +29,4 @@ WORKDIR /yapi/vendors
 
 EXPOSE 3000
 
-CMD ["/bin/sh", "-c", "if [ ! -e \"/yapi/init/init.lock\" ]; then npm run install-server; cp /yapi/init.lock /yapi/init/; fi; node server/app.js"]
+CMD ["/bin/sh", "-c", "if [ ! -e \"/yapi/init/init.lock\" ]; then npm run install-server; cp /yapi/init.lock /yapi/init/; fi; ykit pack -m; node server/app.js"]

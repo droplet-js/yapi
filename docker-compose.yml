@@ -20,7 +20,6 @@ services:
   # 管理员密码：ymfe.org（默认）
   # 数据库地址：mongo
   # 数据库端口：27017
-  # 数据库名：yapi
   yapi:
     container_name: yapi
     image: v7lin/yapi:1.5.2
@@ -30,7 +29,7 @@ services:
       - 8080:3000
     volumes:
       - ../dev-ops-repo/yapi/init:/yapi/init
-      - ../dev-ops-repo/yapi/log:/yapi/log
+#      - ../dev-ops-repo/yapi/log:/yapi/log
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
     depends_on:
