@@ -20,8 +20,8 @@ COPY --from=clone /yapi-${YAPI_VERSION} /yapi/vendors
 RUN apk add --no-cache git python make
 
 RUN cd /yapi/vendors; \
-    npm install -g ykit \
-    npm install --registry https://registry.npm.taobao.org
+    npm install -g ykit; \
+    npm install --production --registry https://registry.npm.taobao.org
 
 COPY config.json /yapi/
 
