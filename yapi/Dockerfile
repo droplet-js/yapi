@@ -54,4 +54,4 @@ WORKDIR /yapi/vendors
 
 EXPOSE 3000
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
