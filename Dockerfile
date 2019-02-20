@@ -49,8 +49,10 @@ RUN apk add --no-cache bash
 COPY --from=build /yapi/vendors /yapi/vendors
 COPY --from=wait /wait-for-it/wait-for-it.sh /yapi/vendors
 
+RUN ls /yapi/vendors
+
 WORKDIR /yapi/vendors
 
 EXPOSE 3000
 
-CMD ["/bin/sh", "-c", "./wait-for-it.sh \$YAPI_DB_SERVERNAME:\$YAPI_DB_PORT -- echo \"yapi db is up.\"; if [ ! -e \"/yapi/init/init.lock\" ]; then npm run install-server; fi; node server/app.js"]
+CMD ["/bin/sh", "-c", "if [ ! -e \"/yapi/init/init.lock\" ]; then npm run install-server; fi; node server/app.js"]
