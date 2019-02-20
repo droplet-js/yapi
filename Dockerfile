@@ -1,9 +1,3 @@
-# --- clone ---
-
-FROM docker:git as clone
-
-RUN git clone -b master https://github.com/vishnubob/wait-for-it.git wait-for-it
-
 # --- download ---
 
 FROM alpine:3.8 as download
@@ -32,12 +26,17 @@ FROM node:7.6-alpine as build
 ENV YAPI_VERSION 1.5.2
 
 COPY --from=download /yapi-${YAPI_VERSION} /yapi/vendors
-COPY --from=clone /wait-for-it/wait-for-it.sh /yapi/vendors
 
 RUN apk add --no-cache python make
 
 RUN cd /yapi/vendors; \
     npm install --production --registry https://registry.npm.taobao.org
+
+# --- wait ---
+
+FROM docker:git as wait
+
+RUN git clone -b master https://github.com/vishnubob/wait-for-it.git wait-for-it
 
 # --- prod ---
 
@@ -45,7 +44,10 @@ FROM node:7.6-alpine as prod
 
 MAINTAINER v7lin <v7lin@qq.com>
 
+RUN apk add --no-cache bash
+
 COPY --from=build /yapi/vendors /yapi/vendors
+COPY --from=wait /wait-for-it/wait-for-it.sh /yapi/vendors
 
 WORKDIR /yapi/vendors
 
