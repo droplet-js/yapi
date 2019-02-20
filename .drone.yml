@@ -14,6 +14,5 @@ steps:
     password:
       from_secret: REGISTRY_PASSWORD
     tags:
-    - test
-#    - latest
-#    - 1.5.2
+    - latest
+    - 1.5.2

@@ -1,3 +1,3 @@
 # yapi
 
-[yapi](https://github.com/YMFE/yapi)
+[YMFE/yapi](https://github.com/YMFE/yapi)
