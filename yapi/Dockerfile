@@ -13,7 +13,7 @@ RUN rm -rf /yapi-${YAPI_VERSION}/docs; \
     rm /yapi-${YAPI_VERSION}/yapi-base-flow.jpg
 
 # 魔改
-COPY server/yapiEnv.js /yapi-${YAPI_VERSION}/server
+COPY yapiEnv.js /yapi-${YAPI_VERSION}/server
 RUN sed -i "s|yapi.commons.generatePassword('ymfe.org', passsalt)|yapi.commons.generatePassword(yapi.WEBCONFIG.adminPassword, passsalt)|g" /yapi-${YAPI_VERSION}/server/install.js
 RUN sed -i "s|\`初始化管理员账号成功,账号名：\"\${yapi.WEBCONFIG.adminAccount}\"，密码：\"ymfe.org\"\`|\`初始化管理员账号成功,账号名：\"\${yapi.WEBCONFIG.adminAccount}\"，密码：\"\${yapi.WEBCONFIG.adminPassword}\"\`|g" /yapi-${YAPI_VERSION}/server/install.js
 RUN sed -i "s|const config = require('../../config.json');|const yapiEnv = require('./yapiEnv.js');\r\nconst config = yapiEnv.parseConfig();|g" /yapi-${YAPI_VERSION}/server/yapi.js
@@ -48,11 +48,10 @@ RUN apk add --no-cache bash
 
 COPY --from=build /yapi/vendors /yapi/vendors
 COPY --from=wait /wait-for-it/wait-for-it.sh /yapi/vendors
-
-RUN ls /yapi/vendors
+COPY entrypoint.sh /yapi/vendors
 
 WORKDIR /yapi/vendors
 
 EXPOSE 3000
 
-CMD ["/bin/sh", "-c", "if [ ! -e \"/yapi/init/init.lock\" ]; then npm run install-server; fi; node server/app.js"]
+ENTRYPOINT ["/entrypoint.sh"]

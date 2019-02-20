@@ -6,6 +6,8 @@ steps:
   image: plugins/docker
   settings:
     repo: v7lin/yapi
+    context: yapi
+    dockerfile: yapi/Dockerfile
     target: prod
     username:
       from_secret: REGISTRY_USER
