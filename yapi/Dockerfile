@@ -2,7 +2,7 @@
 
 FROM alpine:3.8 as download
 
-ENV YAPI_VERSION 1.5.2
+ENV YAPI_VERSION 1.5.5
 
 RUN wget https://github.com/YMFE/yapi/archive/v${YAPI_VERSION}.tar.gz
 RUN tar xzf v${YAPI_VERSION}.tar.gz
@@ -23,7 +23,7 @@ RUN sed -i "s|yapi.path.join(yapi.WEBROOT_RUNTIME, 'init.lock')|yapi.path.join(y
 
 FROM node:7.6-alpine as build
 
-ENV YAPI_VERSION 1.5.2
+ENV YAPI_VERSION 1.5.5
 
 COPY --from=download /yapi-${YAPI_VERSION} /yapi/vendors
 
