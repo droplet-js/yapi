@@ -30,8 +30,8 @@ services:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
       - YAPI_PORT=3000
       - YAPI_CLOSEREGISTER=true # 关闭注册
-      - YAPI_ADMINACCOUNT=admin@admin.com # 管理员帐号
-      - YAPI_ADMINPASSWORD=admin # 管理员密码
+      - YAPI_ADMINACCOUNT=yapi@yapi.com # 管理员帐号
+      - YAPI_ADMINPASSWORD=yapi # 管理员初始化密码
       - YAPI_DB_SERVERNAME=mongo # mongo 数据库地址
       - YAPI_DB_PORT=27017 # mongo 数据库端口
       - YAPI_DB_DATABASE=yapi # mongo 数据库名
