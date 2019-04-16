@@ -30,7 +30,7 @@ services:
 
   yapi:
     container_name: yapi
-    image: v7lin/yapi:1.5.6
+    image: v7lin/yapi
     restart: always
     hostname: yapi
     ports:
