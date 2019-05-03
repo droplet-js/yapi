@@ -2,6 +2,7 @@
 
 [![Build Status](https://cloud.drone.io/api/badges/v7lin/yapi/status.svg)](https://cloud.drone.io/v7lin/yapi)
 [![Docker Pulls](https://img.shields.io/docker/pulls/v7lin/yapi.svg)](https://hub.docker.com/r/v7lin/yapi)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/v7lin/yapi/blob/master/LICENSE)
 
 ### 项目源码
 
