@@ -12,7 +12,7 @@ services:
 #    ports:
 #      - 27017
     volumes:
-      - ../dev-ops-repo/yapi/mongo:/data/db
+      - ../dev-ops-repo/mongo:/data/db
     environment:
       - TZ=${TIME_ZONE:-Asia/Shanghai}
 
